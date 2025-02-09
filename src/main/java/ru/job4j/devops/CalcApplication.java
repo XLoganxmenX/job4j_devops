@@ -4,13 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Основной класс приложения рассчетов, использующего Spring Boot.
+ * РћСЃРЅРѕРІРЅРѕР№ РєР»Р°СЃСЃ РїСЂРёР»РѕР¶РµРЅРёСЏ СЂР°СЃСЃС‡РµС‚РѕРІ, РёСЃРїРѕР»СЊР·СѓСЋС‰РµРіРѕ Spring Boot.
  */
 @SpringBootApplication
 public class CalcApplication {
 	/**
-	 * Точка входа в Spring Boot приложения.
-	 * @param args Аргументы командной строки, передаваемые приложению.
+	 * РўРѕС‡РєР° РІС…РѕРґР° РІ Spring Boot РїСЂРёР»РѕР¶РµРЅРёСЏ.
+	 * @param args РђСЂРіСѓРјРµРЅС‚С‹ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё, РїРµСЂРµРґР°РІР°РµРјС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЋ.
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(CalcApplication.class, args);

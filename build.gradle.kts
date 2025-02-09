@@ -50,6 +50,10 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+tasks.withType<Javadoc> {
+    options.encoding = "UTF-8"
+}
+
 tasks.register<Zip>("zipJavaDoc") {
     group = "documentation" // Группа, в которой будет отображаться задача
     description = "Packs the generated Javadoc into a zip archive"
