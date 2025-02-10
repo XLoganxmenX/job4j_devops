@@ -48,6 +48,7 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+    finalizedBy(tasks.spotbugsMain)
 }
 
 tasks.withType<Javadoc> {
