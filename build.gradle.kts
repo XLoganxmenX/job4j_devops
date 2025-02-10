@@ -46,6 +46,10 @@ dependencies {
 	testImplementation(libs.assertj.core)
 }
 
+tasks.jar {
+    archiveClassifier.set("")
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
     finalizedBy(tasks.spotbugsMain)
@@ -75,4 +79,19 @@ tasks.spotbugsMain {
 
 tasks.test {
     finalizedBy(tasks.spotbugsMain)
+}
+
+tasks.register("checkJarSize") {
+    group = "verification"
+    description = "Check size of jar file and print info"
+    dependsOn("jar")
+    doLast {
+        val fileSize = (file("build/libs/${project.name}-${project.version}.jar").length() / 1024F) / 1024F
+        if (fileSize > 5) {
+            println("JAR file exceeds the size limit of 5 MB")
+        } else {
+            println("JAR file is within the acceptable size limit")
+        }
+        println("Current size: $fileSize MB")
+    }
 }
