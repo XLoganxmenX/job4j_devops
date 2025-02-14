@@ -27,6 +27,11 @@ pipeline {
                 }
             }
         }
+        stage('Package') {
+                    steps {
+                        sh './gradlew build'
+                    }
+                }
         stage('JaCoCo Report') {
             steps {
                 script {
@@ -41,11 +46,6 @@ pipeline {
                 }
             }
         }
-        stage('Docker Build') {
-                    steps {
-                        sh 'docker build'
-                    }
-                }
     }
     post {
         always {
