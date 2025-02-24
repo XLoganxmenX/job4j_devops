@@ -46,7 +46,7 @@ dependencies {
 	testImplementation(libs.assertj.core)
 }
 
-tasks.jar {
+tasks.bootJar {
     archiveClassifier.set("")
 }
 
