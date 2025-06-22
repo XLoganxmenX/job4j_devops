@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'agent1' }
+    agent { label 'agent2' }
 
     tools {
         git 'Default'
@@ -44,6 +44,11 @@ pipeline {
                 script {
                     sh './gradlew jacocoTestCoverageVerification'
                 }
+            }
+        }
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t job4j_devops .'
             }
         }
     }
