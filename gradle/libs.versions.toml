@@ -4,6 +4,7 @@ junit-jupiter = "5.10.0"
 assertj-core = "3.24.2"
 postgresql = "42.7.4"
 liquibase = "4.30.0"
+h2 = "2.1.214"
 
 
 [libraries]
@@ -16,3 +17,4 @@ junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "jun
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj-core" }
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 liquibase = { module = "org.liquibase:liquibase-core", version.ref = "liquibase" }
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
