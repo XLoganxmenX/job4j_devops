@@ -5,6 +5,7 @@ plugins {
 	id("org.springframework.boot") version "3.4.0"
 	id("io.spring.dependency-management") version "1.1.6"
     id("com.github.spotbugs") version "6.0.26"
+    id("org.liquibase.gradle") version "3.0.1"
 }
 
 group = "ru.job4j.devops"
@@ -42,12 +43,40 @@ dependencies {
 	implementation(libs.spring.boot.starter.web)
     implementation(libs.spring.boot.starter.data.jpa)
     implementation(libs.postgresql)
-    implementation(libs.liquibase)
+    liquibaseRuntime(libs.liquibase)
+    liquibaseRuntime(libs.postgresql)
+    liquibaseRuntime(libs.jaxb)
+    liquibaseRuntime(libs.logback.core)
+    liquibaseRuntime(libs.logback.classic)
+    liquibaseRuntime(libs.picocli)
 	testImplementation(libs.spring.boot.starter.test)
 	testRuntimeOnly(libs.junit.platform.launcher)
 	testImplementation(libs.junit.jupiter)
 	testImplementation(libs.assertj.core)
     testImplementation(libs.h2)
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath(libs.liquibase)
+    }
+}
+
+liquibase {
+    activities.register("main") {
+        this.arguments = mapOf(
+            "logLevel"       to "info",
+            "url"            to "jdbc:postgresql://localhost:5432/job4j_devops",
+            "username"       to "postgres",
+            "password"       to "password",
+            "classpath"      to "src/main/resources",
+            "changelogFile"  to "db/changelog/db.changelog-master.xml"
+        )
+    }
+    runList = "main"
 }
 
 tasks.bootJar {

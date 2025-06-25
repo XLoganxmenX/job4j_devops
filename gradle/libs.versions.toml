@@ -5,6 +5,9 @@ assertj-core = "3.24.2"
 postgresql = "42.7.4"
 liquibase = "4.30.0"
 h2 = "2.1.214"
+jaxb = "2.3.1"
+logback = "1.5.15"
+picocli = "4.6.1"
 
 
 [libraries]
@@ -18,3 +21,7 @@ assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj-cor
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 liquibase = { module = "org.liquibase:liquibase-core", version.ref = "liquibase" }
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
+jaxb = { module = "javax.xml.bind:jaxb-api", version.ref = "jaxb" }
+logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+picocli = { module = "info.picocli:picocli", version.ref = "picocli" }
