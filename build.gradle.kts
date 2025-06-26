@@ -6,6 +6,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.6"
     id("com.github.spotbugs") version "6.0.26"
     id("org.liquibase.gradle") version "3.0.1"
+    id("co.uzzu.dotenv.gradle") version "4.0.0"
 }
 
 group = "ru.job4j.devops"
@@ -45,6 +46,7 @@ dependencies {
     implementation(libs.postgresql)
     liquibaseRuntime(libs.liquibase)
     liquibaseRuntime(libs.postgresql)
+    liquibaseRuntime(libs.h2)
     liquibaseRuntime(libs.jaxb)
     liquibaseRuntime(libs.logback.core)
     liquibaseRuntime(libs.logback.classic)
@@ -67,14 +69,18 @@ buildscript {
 
 liquibase {
     activities.register("main") {
-        this.arguments = mapOf(
-            "logLevel"       to "info",
-            "url"            to "jdbc:postgresql://localhost:5432/job4j_devops",
-            "username"       to "postgres",
-            "password"       to "password",
-            "classpath"      to "src/main/resources",
-            "changelogFile"  to "db/changelog/db.changelog-master.xml"
+        val args = mutableMapOf(
+            "logLevel" to "info",
+            "url" to env.DB_URL.value,
+            "username" to env.DB_USERNAME.value,
+            "password" to env.DB_PASSWORD.value,
+            "classpath" to env.LIQUIBASE_CLASSPATH.value,
+            "changelogFile" to "db/changelog/db.changelog-master.xml"
         )
+
+        args.entries.removeIf { it.value.isNullOrBlank() }
+
+        this.arguments = args
     }
     runList = "main"
 }
@@ -145,5 +151,11 @@ tasks.register("checkJarSize") {
             println("JAR file is within the acceptable size limit")
         }
         println("Current size: $fileSize MB")
+    }
+}
+
+tasks.register("profile") {
+    doFirst {
+        println(env.DB_URL.value)
     }
 }
