@@ -11,4 +11,7 @@
     <include file="changeset/002_ddl_alter_table_users_add_columns.sql"
              author="loganxmen"
              relativeToChangelogFile="true"/>
+    <include file="changeset/003_ddl_alter_table_users_add_column_create.sql"
+             author="loganxmen"
+             relativeToChangelogFile="true"/>
 </databaseChangeLog>
