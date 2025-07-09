@@ -8,6 +8,7 @@ h2 = "2.1.214"
 jaxb = "2.3.1"
 logback = "1.5.15"
 picocli = "4.6.1"
+testcontainers = "1.20.4"
 
 
 [libraries]
@@ -25,3 +26,4 @@ jaxb = { module = "javax.xml.bind:jaxb-api", version.ref = "jaxb" }
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 picocli = { module = "info.picocli:picocli", version.ref = "picocli" }
+testcontainers = { module = "org.testcontainers:postgresql", version.ref = "testcontainers" }
