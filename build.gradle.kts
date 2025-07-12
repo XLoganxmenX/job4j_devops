@@ -1,3 +1,5 @@
+import com.github.spotbugs.snom.Confidence
+
 plugins {
 	checkstyle
 	java
@@ -66,7 +68,6 @@ dependencies {
     implementation(libs.postgresql)
     liquibaseRuntime(libs.liquibase)
     liquibaseRuntime(libs.postgresql)
-    liquibaseRuntime(libs.h2)
     liquibaseRuntime(libs.jaxb)
     liquibaseRuntime(libs.logback.core)
     liquibaseRuntime(libs.logback.classic)
@@ -75,8 +76,8 @@ dependencies {
 	testRuntimeOnly(libs.junit.platform.launcher)
 	testImplementation(libs.junit.jupiter)
 	testImplementation(libs.assertj.core)
-    testImplementation(libs.h2)
     testImplementation(libs.testcontainers)
+    testImplementation(libs.liquibase)
 }
 
 buildscript {
@@ -95,8 +96,8 @@ liquibase {
             "url" to env.DB_URL.value,
             "username" to env.DB_USERNAME.value,
             "password" to env.DB_PASSWORD.value,
-            "classpath" to env.LIQUIBASE_CLASSPATH.value,
-            "changelogFile" to "db/changelog/db.changelog-master.xml"
+            "classpath"      to "src/main/resources",
+            "changelogFile"  to "db/changelog/db.changelog-master.xml"
         )
 
         args.entries.removeIf { it.value.isNullOrBlank() }
@@ -134,6 +135,7 @@ tasks.spotbugsMain {
     reports.create("html") {
         required = true
         outputLocation.set(layout.buildDirectory.file("reports/spotbugs/spotbugs.html"))
+        reportLevel = Confidence.HIGH
     }
 }
 
