@@ -66,6 +66,7 @@ dependencies {
 	implementation(libs.spring.boot.starter.web)
     implementation(libs.spring.boot.starter.data.jpa)
     implementation(libs.postgresql)
+    implementation(libs.spring.kafka)
     liquibaseRuntime(libs.liquibase)
     liquibaseRuntime(libs.postgresql)
     liquibaseRuntime(libs.jaxb)
@@ -76,7 +77,9 @@ dependencies {
 	testRuntimeOnly(libs.junit.platform.launcher)
 	testImplementation(libs.junit.jupiter)
 	testImplementation(libs.assertj.core)
-    testImplementation(libs.testcontainers)
+    testImplementation(libs.testcontainers.postgres)
+    testImplementation(libs.testcontainers.kafka)
+    testImplementation(libs.awaitility)
     testImplementation(libs.liquibase)
 }
 
