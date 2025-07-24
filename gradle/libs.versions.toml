@@ -16,6 +16,7 @@ lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
 spring-kafka = { module = "org.springframework.kafka:spring-kafka" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
@@ -30,3 +31,4 @@ picocli = { module = "info.picocli:picocli", version.ref = "picocli" }
 testcontainers-postgres = { module = "org.testcontainers:postgresql", version.ref = "testcontainers" }
 testcontainers-kafka = { module = "org.testcontainers:kafka", version.ref = "testcontainers" }
 awaitility = { module = "org.awaitility:awaitility" }
+micrometer-registry-prometheus = { module = "io.micrometer:micrometer-registry-prometheus" }
